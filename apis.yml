@@ -1,7 +1,25 @@
 aid: aa-audience
+accessModel:
+  pricing: unknown
+  onboarding: unknown
+  trial: false
+  try_now: false
+  public: false
+  label: Unknown
+  confidence: low
+  source: []
+  generated: '2026-07-22'
+  method: derived
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/aa-audience.png
 name: AA Audience
-description: AA Audience is a company surfaced as a portfolio company of 500-global and added to the API
-  Evangelist network as a stub for enrichment. This profile is a lead awaiting the enrichment pipeline.
+description: AA Audience is an adtech and data company that estimates a mobile user's credit
+  score from their online activity using proprietary machine learning models. It collects data from
+  partner mobile apps and ad networks, analyzes it, and connects with popular DSPs and DMPs so its
+  clients - banks, credit card companies, and financial services firms - can target audiences
+  interested in credit cards, loans, and financial services with guaranteed ROI. Surfaced as a
+  portfolio company of 500 Global and added to the API Evangelist network. No public API, developer
+  portal, or documentation surface was found during enrichment (the site is a single static
+  marketing page).
 url: https://raw.githubusercontent.com/api-evangelist/aa-audience/refs/heads/main/apis.yml
 x-type: company
 x-source: vc-portfolio
@@ -12,8 +30,16 @@ x-tier-reason: portfolio-lead
 specificationVersion: '0.20'
 created: '2026-07-17'
 modified: '2026-07-17'
+x-enrichment-note: 'No API/docs/package/well-known surface found; site is a static single-page marketing site (S3, last modified 2018); only real artifact is a domain-security probe.'
 tags:
 - Company
+- Advertising
+- Data
+- Machine Learning
+- Credit Scoring
+- Financial Services
+- Audience Targeting
+- Adtech
 apis: []
 maintainers:
 - FN: Kin Lane
@@ -21,5 +47,12 @@ maintainers:
 - FN: APIs.json
   email: info@apis.io
 common:
+- type: DomainSecurity
+  url: security/aa-audience-domain-security.yml
 - type: Website
   url: https://aaaudi.com
+x-enrichment:
+  date: '2026-07-19'
+  status: backfilled
+  pass: local-v1
+  note: backfilled from .gitignore signal + verified work evidence
