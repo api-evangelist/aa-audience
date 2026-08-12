@@ -1,0 +1,46 @@
+generated: '2026-08-12'
+method: searched
+source: https://aaaudi.com/advertisers.html
+docs: https://aaaudi.com/advertisers.html
+note: >-
+  AA Audience publishes no pricing page and no plan tiers. The only price the company
+  states anywhere on its public site is a single rate floor on the advertisers page -
+  "Pricing starting at just $1 CPM" - for buying its audience segments programmatically.
+  There is no self-serve signup, no plan comparison, no quota or overage table, and no
+  billing terms; everything else routes through the contact form. Recorded as one
+  published rate floor rather than a plan, because that is exactly what the provider
+  publishes.
+currency: USD
+self_serve: false
+free_tier: false
+trial: false
+signup_url: null
+contact_sales: https://aaaudi.com/contact.html
+plan_count: 0
+plans: []
+published_rates:
+- name: Audience segments (programmatic buying)
+  price_from: 1.00
+  currency: USD
+  unit: CPM
+  billing_period: null
+  delivery:
+  - Narrowed segment in the buyer's DMP of choice
+  - DealID created for the buyer's DSP
+  quota: null
+  overage: null
+  source: https://aaaudi.com/advertisers.html
+  verbatim: 'Pricing starting at just $1 CPM'
+- name: Publisher header-bidding tag
+  price_from: 0
+  currency: USD
+  unit: flat
+  billing_period: null
+  quota: null
+  overage: null
+  source: https://aaaudi.com/publishers.html
+  verbatim: 'Free and simple JavaScript header bidding tag integration.'
+  note: >-
+    Described as free to publishers on the publishers page; the revenue model is the
+    eCPM uplift, not a fee. No tag URL, snippet, or integration doc is published, so
+    no component artifact could be recorded.

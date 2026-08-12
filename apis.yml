@@ -16,10 +16,13 @@ description: AA Audience is an adtech and data company that estimates a mobile u
   score from their online activity using proprietary machine learning models. It collects data from
   partner mobile apps and ad networks, analyzes it, and connects with popular DSPs and DMPs so its
   clients - banks, credit card companies, and financial services firms - can target audiences
-  interested in credit cards, loans, and financial services with guaranteed ROI. Surfaced as a
+  interested in credit cards, loans, and financial services with guaranteed ROI. Publishers
+  integrate a JavaScript header-bidding tag to enrich their bid stream; advertisers buy segments
+  into their own DMP or as a DealID for their DSP, from a stated floor of $1 CPM. Surfaced as a
   portfolio company of 500 Global and added to the API Evangelist network. No public API, developer
-  portal, or documentation surface was found during enrichment (the site is a single static
-  marketing page).
+  portal, documentation, specification, SDK, or public repository was found during enrichment - the
+  site is five static HTML pages served from an S3 bucket whose homepage has not changed since March
+  2018, and the Login link in the navigation is a dead button on a page with no form.
 url: https://raw.githubusercontent.com/api-evangelist/aa-audience/refs/heads/main/apis.yml
 x-type: company
 x-source: vc-portfolio
@@ -29,8 +32,15 @@ x-tier: stub
 x-tier-reason: portfolio-lead
 specificationVersion: '0.20'
 created: '2026-07-17'
-modified: '2026-07-17'
-x-enrichment-note: 'No API/docs/package/well-known surface found; site is a static single-page marketing site (S3, last modified 2018); only real artifact is a domain-security probe.'
+modified: '2026-08-12'
+x-enrichment-note: >-
+  2026-08-12 re-pass: full contract discovery run and confirmed empty. No OpenAPI/Swagger/GraphQL/
+  MCP/AsyncAPI on aaaudi.com or any subdomain; every /.well-known/* path returns the S3 bucket's
+  403 AccessDenied; no npm/PyPI package; no public repo. The one subdomain that resolves,
+  cdn.aaaudi.com, fails TLS (cert is *.cloudfront.net) and over HTTP serves an Altitude Arena video
+  player debug console belonging to a DIFFERENT company - nothing from that host was recorded
+  against AA Audience. Also notable: no privacy policy, terms, or opt-out page is published by a
+  company whose product is inferring consumer credit attributes from mobile behavioural data.
 tags:
 - Company
 - Advertising
@@ -49,10 +59,34 @@ maintainers:
 common:
 - type: DomainSecurity
   url: security/aa-audience-domain-security.yml
+- type: Plans
+  url: plans/aa-audience-plans-pricing.yml
+- type: LLMsTxt
+  url: llms/aa-audience-llms.txt
 - type: Website
   url: https://aaaudi.com
 x-enrichment:
-  date: '2026-07-19'
-  status: backfilled
+  date: '2026-08-12'
+  status: minimal
+  artifacts_added: 3
   pass: local-v1
-  note: backfilled from .gitignore signal + verified work evidence
+x-coverage:
+  state: none
+  reason: no-developer-program
+  detail: >-
+    AA Audience ships no software to integrate with - the whole product is delivered through
+    third-party DSPs and DMPs, and its five-page S3-hosted marketing site (homepage unchanged since
+    March 2018) has no developer page, no docs, no spec at any path, and a Login link that is a
+    dead href="#" button on a page with no form.
+  evidence:
+  - url: https://aaaudi.com/
+    status: 200
+  - url: https://aaaudi.com/openapi.json
+    status: 403
+  - url: https://aaaudi.com/.well-known/agent-card.json
+    status: 403
+  - url: https://aaaudi.com/llms.txt
+    status: 403
+  - url: https://docs.aaaudi.com
+    status: 0
+  checked: '2026-08-12'

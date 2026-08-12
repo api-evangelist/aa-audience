@@ -1,0 +1,53 @@
+generated: '2026-08-12'
+method: probed
+source: live HTTPS probes of https://aaaudi.com (the only host AA Audience publishes)
+note: >-
+  Every well-known path was probed and NONE returned a document. aaaudi.com is a static
+  site served from an Amazon S3 bucket behind CloudFront (Server: AmazonS3, homepage
+  Last-Modified 2018-03-14), and the bucket returns an S3 "AccessDenied" XML error with
+  HTTP 403 for any key that does not exist. A 403 AccessDenied from an S3 origin is the
+  functional equivalent of a 404 here - it is the bucket's not-found behaviour, not a
+  gate over a real document. No WellKnown or SecurityTxt pointer is emitted from this
+  probe, because the provider serves none of these surfaces.
+hosts:
+- host: aaaudi.com
+  origin: Amazon S3 via CloudFront
+  not_found_behavior: HTTP 403 application/xml <Error><Code>AccessDenied</Code>
+  paths:
+  - path: /.well-known/security.txt
+    status: 403
+    result: miss
+    file: null
+  - path: /.well-known/openid-configuration
+    status: 403
+    result: miss
+    file: null
+  - path: /.well-known/oauth-authorization-server
+    status: 403
+    result: miss
+    file: null
+  - path: /.well-known/oauth-protected-resource
+    status: 403
+    result: miss
+    file: null
+  - path: /.well-known/api-catalog
+    status: 403
+    result: miss
+    file: null
+  - path: /.well-known/ai-plugin.json
+    status: 403
+    result: miss
+    file: null
+  - path: /.well-known/agent-card.json
+    status: 403
+    result: miss
+    file: null
+  - path: /.well-known/agent.json
+    status: 403
+    result: miss
+    file: null
+summary:
+  probed: 8
+  hits: 0
+  documents_saved: 0
+  pointer_emitted: false

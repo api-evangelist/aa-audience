@@ -1,0 +1,95 @@
+# AA Audience
+
+> AA Audience is an adtech and data company that estimates a mobile user's credit score from their
+> online activity using proprietary machine learning models. It collects data from partner mobile
+> apps and ad networks, scores it, and distributes the resulting segments through mainstream DSPs
+> and DMPs so financial-services buyers can target people likely to want credit cards, loans and
+> mortgages.
+
+<!--
+generated: 2026-08-12
+method: generated
+source: apis.yml + https://aaaudi.com/ (index.html, publishers.html, advertisers.html, contact.html,
+        login.html) fetched 2026-08-12; AA Audience publishes no llms.txt of its own
+        (https://aaaudi.com/llms.txt -> HTTP 403 S3 AccessDenied).
+-->
+
+## What the company does
+
+- **Credit-score estimation for mobile users.** AA Audience states it can estimate a mobile user's
+  credit score from that user's online activity, using proprietary machine learning models.
+- **Data supply.** Data is collected from partner mobile apps and ad networks.
+- **Distribution.** Scored audiences are made available in mainstream programmatic infrastructure —
+  the site names AdX, OATH, Rubicon, OpenX, LiveRamp and BlueKai.
+- **Buyers.** Banks, credit card companies and financial services firms, buying audiences for
+  credit-card, loan and financial-services campaigns.
+- **Segments.** The advertisers page claims over 100 segments, keyed on attributes such as
+  estimated credit score, number of credit cards, and mortgage status.
+
+## Two sides of the marketplace
+
+- **Publishers** (https://aaaudi.com/publishers.html) — mobile websites and apps drop a JavaScript
+  header-bidding tag; AA Audience enriches the bid stream with user attributes so those users clear
+  at higher eCPM. No tag URL, snippet or integration documentation is published.
+- **Advertisers** (https://aaaudi.com/advertisers.html) — buyers state an audience goal, and
+  AA Audience either narrows a segment inside the buyer's DMP or creates a DealID for the buyer's
+  DSP. Stated rate floor: $1 CPM.
+
+## Developer surface
+
+**There is none.** As of 2026-08-12 AA Audience publishes no API, no developer portal, no
+documentation site, no machine-readable specification, no SDK or package on any public registry,
+and no public repositories. Integration is described only in prose, and every call to action on the
+site routes to a contact form. The "Login" link in the site navigation is a dead button
+(`href="#"`) on a page with no form.
+
+Probed and confirmed absent on 2026-08-12:
+
+- `https://aaaudi.com/openapi.json`, `/openapi.yaml`, `/swagger.json`, `/v1/openapi.json`,
+  `/api-docs`, `/docs`, `/redoc`, `/graphql`, `/api`, `/mcp` — all HTTP 403 (S3 AccessDenied)
+- `https://aaaudi.com/.well-known/*` (security.txt, openid-configuration,
+  oauth-authorization-server, oauth-protected-resource, api-catalog, ai-plugin.json,
+  agent-card.json, agent.json) — all HTTP 403
+- `api.aaaudi.com`, `docs.aaaudi.com`, `developer.aaaudi.com`, `app.aaaudi.com`,
+  `portal.aaaudi.com`, `dashboard.aaaudi.com`, `data.aaaudi.com`, `pixel.aaaudi.com`,
+  `tag.aaaudi.com`, `js.aaaudi.com`, `status.aaaudi.com` — no DNS
+- npm / PyPI — no package under any AA Audience name
+
+The site itself is static HTML served from an Amazon S3 bucket behind CloudFront; the homepage
+carries `Last-Modified: Wed, 14 Mar 2018 23:59:11 GMT`. The contact form posts to a Google Apps
+Script endpoint. Because the origin is an S3 bucket, any path that does not exist answers HTTP 403
+with an `AccessDenied` XML body rather than 404 — read those 403s as "no such document".
+
+One subdomain does resolve, `cdn.aaaudi.com`, but it does not belong to this product: it fails TLS
+(the certificate is `*.cloudfront.net` and does not cover the hostname) and over plain HTTP it
+serves a video-player debug console for **Altitude / Altitude Arena**
+(`arena.altitude-arena.com`, `altitudeplatform.com`), a different company. Nothing on that host was
+recorded against AA Audience.
+
+## Pricing
+
+- Audience segments: from **$1 CPM** (https://aaaudi.com/advertisers.html)
+- Publisher header-bidding tag: described as free to publishers
+  (https://aaaudi.com/publishers.html)
+- No plan tiers, quotas, overage table, self-serve signup or billing terms are published.
+
+## Compliance and privacy posture
+
+AA Audience publishes **no privacy policy, no terms of service, no opt-out page and no
+security.txt** — `/privacy.html`, `/terms.html`, `/opt-out.html` and
+`/.well-known/security.txt` all 403. The domain has no DNSSEC, no CAA, no SPF and no DMARC record,
+and does not send HSTS. This is recorded as measured fact about a company whose stated product is
+inferring consumer credit attributes from mobile behavioural data.
+
+## Company facts
+
+- Founded 2017; accelerator round from 500 Global (500 Startups Batch 21).
+- Profiled by API Evangelist as a portfolio lead, not at the company's request.
+
+## Links
+
+- Website: https://aaaudi.com
+- Publishers: https://aaaudi.com/publishers.html
+- Advertisers: https://aaaudi.com/advertisers.html
+- Contact: https://aaaudi.com/contact.html
+- API Evangelist profile: https://apis.io/provider/aa-audience/
